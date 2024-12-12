@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quran School Management</title>
+    <link rel="stylesheet" href="n.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <h1>Quran School Management</h1>
+        <p>Organize your Quran school efficiently</p>
+    </header>
+    <main>
+        <section id="classes">
+            <h2>Classes</h2>
+            <div id="class-list">
+                <!-- Classes dynamically loaded here -->
+            </div>
+        </section>
+        <section id="students" style="display: none;">
+            <h2>Students</h2>
+           
+            <div id="student-list">
+                <!-- Students dynamically loaded here -->
+            </div>
+            <button id="back-to-classes">Back to Classes</button>
+        </section>
+        <section id="student-details" style="display: none;">
+            <h2 id="student-name"></h2>
+            <table id="recitations">
+                <thead>
+                    
+                </thead>
+                <tbody>
+                    <!-- Recitations dynamically loaded here -->
+                </tbody>
+            </table>
+            <button id="add-recitation">+ Add Recitation</button>
+            <button id="back-to-students">Back to Students</button>
+        </section>
+    </main>
+    <footer>
+        <p>Quran School Management System &copy; 2024</p>
+    </footer>
+    <script>
+        const studentsContainer = document.getElementById("student-list");
+
+    </script>
+    <script type="module" src="modal.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,499 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background-color: #0c5b5c;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 18px;
+    margin-top: 5px;
+    font-weight: 300;
+}
+
+/* Main Section */
+main {
+    margin: 30px;
+}
+
+/* Classes Section */
+#classes {
+    display: block;
+}
+/* Parent container for the card */
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Class name styling */
+.class-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    flex-grow: 1;
+}
+
+/* Buttons container */
+.card-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds a fixed 10px gap between buttons */
+}
+
+/* Button styles */
+.edit-btn,
+.delete-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-btn {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.edit-btn:hover {
+    background-color: #45a049;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Responsive adjustments */
+@media (max-width: 720px) {
+    .class-name {
+        font-size: 1rem;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Add Button */
+.add-btn {
+    background-color: #0c5b5c;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: inline-block;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: #0b4647;
+    transform: scale(1.05);
+}
+
+.add-btn:active {
+    transform: scale(0.98);
+}
+
+/* Students Section */
+#students {
+    display: none;
+}
+
+.student-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 15px 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.student-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.student-card h3 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.student-card .button-group {
+    display: flex;
+    gap: 10px;  /* 10px gap between buttons */
+}
+
+/* Student Details Section */
+#student-details {
+    display: none;
+}
+
+#student-name {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #0c5b5c;
+}
+
+#recitations {
+    width: 100%;
+    margin-top: 30px;
+    border-collapse: collapse;
+}
+
+#recitations th, #recitations td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+#recitations th {
+    background-color: #0c5b5c;
+    color: white;
+}
+
+#recitations tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Buttons for student actions */
+#add-recitation, #back-to-students, #back-to-classes {
+    background-color: #0c5b5c;
+    color: white;
+    padding: 12px 17px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#add-recitation:hover, #back-to-students:hover, #back-to-classes:hover {
+    background-color: #0b4647;
+    transform: scale(1.05);
+}
+
+#add-recitation:active, #back-to-students:active, #back-to-classes:active {
+    transform: scale(0.98);
+}
+/* General Modal Styles */
+.modal {    position: fixed;    top: 50%;    left: 50%;   transform: translate(-50%, -50%);   width: 90%;    max-width: 500px;    background: #fff;    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.3);    border-radius: 12px;    z-index: 1000;    display: flex;    flex-direction: column;    opacity: 0;    visibility: hidden;    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Modal Header */
+.modal-title {
+    position: relative;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+/* Modal Body */
+.modal-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Spacing between input fields */
+}
+
+/* Input Fields */
+.modal-body label {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #333;
+    position: relative;
+}
+
+/* Make inputs bigger and more creative */
+.modal-body .modal-input {
+    display: block;
+    width: 100%;
+    padding: 18px 22px;
+    font-size: 1.2rem;
+    border: 2px solid #ddd;
+    border-radius: 12px; /* Rounded corners */
+    background: #f6f8fa;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    outline: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Floating label effect */
+.modal-body .modal-input:focus {
+    border-color: #6a11cb;
+    background: #fff;
+    box-shadow: 0px 4px 12px rgba(106, 17, 203, 0.3);
+    transform: scale(1.05); /* Slightly enlarges on focus */
+}
+
+/* Floating label behavior */
+.modal-body .modal-input:focus ~ .modal-label,
+.modal-body .modal-input:not(:placeholder-shown) ~ .modal-label {
+    transform: translateY(-20px);
+    font-size: 0.9rem;
+    color: #6a11cb;
+}
+
+/* Label styling */
+.modal-body .modal-label {
+    position: absolute;
+    left: 20px;
+    top: 18px;
+    font-size: 1.1rem;
+    color: #aaa;
+    font-weight: 600;
+    pointer-events: none;
+    transition: transform 0.3s ease, font-size 0.3s ease, color 0.3s ease;
+}
+
+/* Hover state for inputs */
+.modal-body .modal-input:hover {
+    border-color: #6a11cb;
+}
+
+/* Dropdown select field */
+.modal-body select.modal-input {
+    background: #f6f8fa;
+    padding: 18px 22px;
+    font-size: 1.2rem;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    outline: none;
+    appearance: none; /* Remove default dropdown */
+}
+
+/* Focus state for dropdown */
+.modal-body select.modal-input:focus {
+    border-color: #6a11cb;
+    background: #fff;
+    box-shadow: 0px 4px 12px rgba(106, 17, 203, 0.3);
+    transform: scale(1.05);
+}
+
+/* Submit Button Container */
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 20px;
+}
+
+.modal-actions button {
+    flex: 1;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-actions button:hover {
+    transform: translateY(-2px);
+}
+
+.cancel-btn {
+    background: #e0e0e0;
+    color: #555;
+}
+
+.cancel-btn:hover {
+    background: #ccc;
+}
+
+.confirm-btn {   background: linear-gradient(135deg, #6a11cb, #2575fc);  color: #fff;}
+
+.confirm-btn:hover {    background: linear-gradient(135deg, #4c0dbb, #1a5ed9);}
+
+/* Close Button */
+.close-modal {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 3em;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    z-index: 1;
+}
+
+.close-modal:hover {
+    color: #6a11cb;
+}
+
+/* Snackbar */
+.snackbar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: #0c5b5c; color: #fff; padding: 12px 25px; border-radius: 5px; font-size: 16px; opacity: 0; visibility: hidden;transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.snackbar.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.snackbar.success {
+    background-color: #28a745;
+}
+
+.snackbar.error {
+    background-color: #dc3545;
+}
+
+/* Responsive Modal for different screen sizes */
+
+/* For small screens (max-width: 768px) */
+@media (max-width: 768px) {
+    .modal {
+        width: 90%;
+        max-width: 400px;
+    }.modal-body {
+        padding: 15px;
+    }.modal-body .modal-input {
+        padding: 16px 20px;
+        font-size: 1.1rem;
+    }.modal-body label {
+        font-size: 0.9rem;
+    }.modal-actions button {
+        font-size: 0.9rem;
+        padding: 10px 14px;
+    }.cancel-btn,.confirm-btn {
+        padding: 12px 14px;
+    }
+}
+
+/* For very small screens (max-width: 480px) */
+@media (max-width: 480px) {
+    .modal {
+        width: 90%;
+        max-width: 350px;
+    }
+    .modal-body {
+        padding: 12px;
+    }
+    .modal-body .modal-input {
+        padding: 14px 18px;
+        font-size: 1rem;
+    }
+    .modal-body label {
+        font-size: 0.85rem;
+    }.modal-actions button {
+        font-size: 0.85rem;
+        padding: 10px 12px;
+    }.cancel-btn,
+    .confirm-btn {
+        padding: 10px 12px;
+    }
+}
+
+/* Footer Styles */
+footer {background-color: #0c5b5c;color: #fff;text-align: center;padding: 20px; margin-top: 30px;}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .add-btn {
+        width: 100%;
+        padding: 15px;
+    }#recitations th, #recitations td {
+        padding: 8px;
+    }.modal-content {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 28px;
+    } header p {
+        font-size: 14px;
+    }.add-btn {
+        padding: 12px;
+    }#add-recitation, #back-to-students, #back-to-classes {
+        width: 100%;
+        padding: 12px 0;
+    }
+}
