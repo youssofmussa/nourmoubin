@@ -1,53 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nour Moubin School Management</title>
+    <title>إدارة مدرسة نور مبين</title>
     <link rel="stylesheet" href="n.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
 </head>
-<body>
+<body dir="rtl">
     <header>
-        <h1>Nour Moubin School Management</h1>
-        <p>Organize your Quran school efficiently</p>
+        <h1>إدارة مدرسة نور مبين</h1>
+        <p>نظّم مدرستك القرآنية بكفاءة</p>
     </header>
     <main>
         <section id="classes">
-            <h2>Classes</h2>
+            <h2>الفصول</h2>
             <div id="class-list">
-                <!-- Classes dynamically loaded here -->
+                <!-- الفصول يتم تحميلها هنا بشكل ديناميكي -->
             </div>
         </section>
         <section id="students" style="display: none;">
-            <h2>Students</h2>
-           
+            <h2>الطلاب</h2>
             <div id="student-list">
-                <!-- Students dynamically loaded here -->
+                <!-- الطلاب يتم تحميلهم هنا بشكل ديناميكي -->
             </div>
-            <button id="back-to-classes">Back to Classes</button>
+            <button id="back-to-classes">العودة إلى الفصول</button>
         </section>
         <section id="student-details" style="display: none;">
             <h2 id="student-name"></h2>
             <table id="recitations">
                 <thead>
-                    
+                    <!-- رؤوس الأعمدة يمكن إضافتها هنا -->
                 </thead>
                 <tbody>
-                    <!-- Recitations dynamically loaded here -->
+                    <!-- التلاوات يتم تحميلها هنا بشكل ديناميكي -->
                 </tbody>
             </table>
-            <button id="add-recitation">+ Add Recitation</button>
-            <button id="back-to-students">Back to Students</button>
+            <button id="add-recitation">+ إضافة تلاوة</button>
+            <button id="back-to-students">العودة إلى الطلاب</button>
         </section>
     </main>
     <footer>
-        <p>Nour Moubin School Management System &copy; 2024</p>
+        <p>نظام إدارة مدرسة نور مبين &copy; 2024</p>
     </footer>
     <script>
         const studentsContainer = document.getElementById("student-list");
-
     </script>
     <script type="module" src="modal.js"></script>
     <script type="module" src="script.js"></script>

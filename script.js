@@ -14,7 +14,7 @@ const classesContainer = document.getElementById("class-list");
 const studentDetails = document.getElementById("student-details");
 const recitationTable = document.querySelector("#recitations tbody");
 const addClassButton = document.createElement("button");
-addClassButton.textContent = "+ Add Class";
+addClassButton.textContent = "+ إضافة فصل";
 addClassButton.classList.add("add-btn");
 
 function loadClasses() {
@@ -49,8 +49,8 @@ function loadClasses() {
 // Add Class
 addClassButton.addEventListener("click", () => {
     openModal(
-        'Add Class',
-        `<label for="new-class-name">Class Name:</label>
+        'إضافة فصل',
+        `<label for="new-class-name">اسم الفصل:</label>
          <input id="new-class-name" type="text" class="modal-input" />`,
         () => {
             const className = document.getElementById("new-class-name").value.trim();
@@ -58,9 +58,9 @@ addClassButton.addEventListener("click", () => {
                 data.classes.push({ name: className, students: [] });
                 saveData();
                 loadClasses();
-                showSnackbar("Class added successfully!");
+                showSnackbar("تم إضافة الفصل بنجاح!");
             } else {
-                showSnackbar("Class name cannot be empty!");
+                showSnackbar("اسم الفصل لا يمكن أن يكون فارغًا!");
             }
         }
     );
@@ -71,10 +71,10 @@ function editClass(classIndex) {
     const currentName = data.classes[classIndex].name;
 
     openModal(
-        "Edit Class Name",
+        "تعديل اسم الفصل",
         `
         <div class="modal-inputs">
-            <label for="edit-class-name">Class Name:</label>
+            <label for="edit-class-name">اسم الفصل:</label>
             <input id="edit-class-name" type="text" value="${currentName}" class="modal-input" />
         </div>
         `,
@@ -84,9 +84,9 @@ function editClass(classIndex) {
                 data.classes[classIndex].name = newName;
                 saveData();
                 loadClasses();
-                showSnackbar("Class name updated successfully!", "success");
+                showSnackbar("تم تحديث اسم الفصل بنجاح!", "success");
             } else {
-                showSnackbar("Class name cannot be empty!", "error");
+                showSnackbar("اسم الفصل لا يمكن أن يكون فارغًا!", "error");
             }
         }
     );
@@ -118,13 +118,13 @@ window.editClass = editClass;
 // Delete Class
 function deleteClass(classIndex) {
     openModal(
-        'Confirm Deletion',
-        'Are you sure you want to delete this class?',
+        'تأكيد الحذف',
+        'هل أنت متأكد أنك تريد حذف هذا الفصل؟',
         () => {
             data.classes.splice(classIndex, 1); // Remove the class from the array
             saveData(); // Save updated data to localStorage
             loadClasses(); // Reload classes to reflect the change
-            showSnackbar("Class deleted successfully!");
+            showSnackbar("تم حذف الفصل بنجاح!");
         }
     );
 }
@@ -135,7 +135,7 @@ function loadStudents(classIndex) {
     document.getElementById("students").style.display = "block";
     studentsContainer.innerHTML = "";
     const addStudentButton = document.createElement("button");
-    addStudentButton.textContent = "+ Add Student";
+    addStudentButton.textContent = "+ إضافة طالب";
     addStudentButton.classList.add("add-btn");
     addStudentButton.addEventListener("click", () => addStudent(classIndex));
     data.classes[classIndex].students.forEach((student, studentIndex) => {
@@ -167,10 +167,10 @@ function loadStudents(classIndex) {
 // Add Student
 function addStudent(classIndex) {
     openModal(
-        'Add Student',
-        `<label for="new-student-name">Student Name:</label>
+        'إضافة طالب',
+        `<label for="new-student-name">اسم الطالب:</label>
          <input id="new-student-name" type="text" class="modal-input" />
-         <label for="new-student-branch">Branch (Friday/Saturday):</label>
+         <label for="new-student-branch">الفرع (الجمعة/السبت):</label>
          <input id="new-student-branch" type="text" class="modal-input" />`,
         () => {
             const studentName = document.getElementById("new-student-name").value.trim();
@@ -184,9 +184,9 @@ function addStudent(classIndex) {
                 data.classes[classIndex].students.push(newStudent);
                 saveData();
                 loadStudents(classIndex);
-                showSnackbar("Student added successfully!");
+                showSnackbar("تم إضافة الطالب بنجاح!");
             } else {
-                showSnackbar("All fields are required!");
+                showSnackbar("جميع الحقول مطلوبة!");
             }
         }
     );
@@ -198,10 +198,10 @@ function editStudent(classIndex, studentIndex) {
     const { name: currentName, branch: currentBranch } = student;
 
     openModal(
-        'Edit Student Details',
-        `<label for="edit-student-name">Student Name:</label>
+        'تعديل بيانات الطالب',
+        `<label for="edit-student-name">اسم الطالب:</label>
          <input id="edit-student-name" type="text" value="${currentName}" class="modal-input" />
-         <label for="edit-student-branch">Branch (Friday/Saturday):</label>
+         <label for="edit-student-branch">الفرع (الجمعة/السبت):</label>
          <input id="edit-student-branch" type="text" value="${currentBranch}" class="modal-input" />`,
         () => {
             const newName = document.getElementById("edit-student-name").value.trim();
@@ -212,9 +212,9 @@ function editStudent(classIndex, studentIndex) {
                 student.branch = newBranch;
                 saveData();
                 loadStudents(classIndex);
-                showSnackbar("Student details updated successfully!");
+                showSnackbar("تم تحديث بيانات الطالب بنجاح!");
             } else {
-                showSnackbar("All fields are required!");
+                showSnackbar("جميع الحقول مطلوبة!");
             }
         }
     );
@@ -226,13 +226,13 @@ window.editStudent = editStudent;
 // Delete Student
 function deleteStudent(classIndex, studentIndex) {
     openModal(
-        'Confirm Deletion',
-        'Are you sure you want to delete this student?',
+        'تأكيد الحذف',
+        'هل أنت متأكد أنك تريد حذف هذا الطالب؟',
         () => {
             data.classes[classIndex].students.splice(studentIndex, 1); // Remove the student
             saveData(); // Save updated data to localStorage
             loadStudents(classIndex); // Reload students to reflect the change
-            showSnackbar("Student deleted successfully!");
+            showSnackbar("تم حذف الطالب بنجاح!");
         }
     );
 }
@@ -250,11 +250,11 @@ function showStudentDetails(classIndex, studentIndex) {
     // Add a table header with the "Actions" column
     recitationTable.innerHTML = `
         <tr>
-            <th>Date</th>
-            <th>Surah</th>
-            <th>From</th>
-            <th>To</th>
-            <th>Actions</th> <!-- New "Actions" column -->
+            <th>التاريخ</th>
+            <th>السورة</th>
+            <th>من</th>
+            <th>إلى</th>
+            <th>الإجراءات</th> <!-- New "Actions" column -->
         </tr>
     `;
 
@@ -267,13 +267,13 @@ function showStudentDetails(classIndex, studentIndex) {
             <td>${rec.from}</td>
             <td>${rec.to}</td>
             <td>
-                <div class="card-buttons">
-                    <button class="edit-btn" onclick="editRecitation(${classIndex}, ${studentIndex}, ${recIndex})">
-                        <i class="fa fa-edit"></i>
-                    </button>
-                    <button class="delete-btn" onclick="deleteRecitation(${classIndex}, ${studentIndex}, ${recIndex})">
-                        <i class="fa fa-trash"></i>
-                    </button>
+            <div class="card-buttons">
+                <button class="edit-btn" onclick="editRecitation(${classIndex}, ${studentIndex}, ${recIndex})">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button class="delete-btn" onclick="deleteRecitation(${classIndex}, ${studentIndex}, ${recIndex})">
+                    <i class="fa fa-trash"></i>
+                </button>
                 </div>
             </td>
         `;
@@ -289,39 +289,29 @@ function showStudentDetails(classIndex, studentIndex) {
 // Updated Function to Open Modal on Add Recitation Click
 function addRecitation(classIndex, studentIndex) {
     openModal(
-        'Add Recitation',
-        `
-        <div class="modal-body">
-            <label for="recitation-date">Date</label>
-            <input id="recitation-date" type="date" class="modal-input" />
-            <label for="recitation-surah">Surah Name</label>     <input id="recitation-surah" type="text" placeholder="Enter Surah Name" class="modal-input" />
-            <label for="recitation-from">From Ayah</label>       <input id="recitation-from" type="text" placeholder="Enter Start Ayah" class="modal-input" />
-                        <label for="recitation-to">To Ayah</label>            <input id="recitation-to" type="text" placeholder="Enter End Ayah" class="modal-input" />
-        </div>
-        `,
+        'إضافة تلاوة',
+        `<label for="recitation-date">التاريخ:</label>
+         <input id="recitation-date" type="date" class="modal-input" />
+         <label for="recitation-surah">السورة:</label>
+         <input id="recitation-surah" type="text" class="modal-input" />
+         <label for="recitation-from">من:</label>
+         <input id="recitation-from" type="text" class="modal-input" />
+         <label for="recitation-to">إلى:</label>
+         <input id="recitation-to" type="text" class="modal-input" />`,
         () => {
-            // Get modal inputs
-            const newDate = document.getElementById("recitation-date").value;
-            const newSurah = document.getElementById("recitation-surah").value;
-            const newFrom = document.getElementById("recitation-from").value;
-            const newTo = document.getElementById("recitation-to").value;
+            const date = document.getElementById("recitation-date").value;
+            const surah = document.getElementById("recitation-surah").value.trim();
+            const from = document.getElementById("recitation-from").value.trim();
+            const to = document.getElementById("recitation-to").value.trim();
 
-            // Validate inputs
-            if (newDate && newSurah && newFrom && newTo) {
-                const newRecitation = {
-                    date: newDate,
-                    surah: newSurah,
-                    from: newFrom,
-                    to: newTo,
-                };
-
-                // Add recitation to the student
-                data.classes[classIndex].students[studentIndex].recitations.push(newRecitation);
-                saveData(); // Save to localStorage
-                showStudentDetails(classIndex, studentIndex); // Refresh UI
-                showSnackbar("Recitation added successfully!");
+            if (date && surah && from && to) {
+                const recitation = { date, surah, from, to };
+                data.classes[classIndex].students[studentIndex].recitations.push(recitation);
+                saveData();
+                showStudentDetails(classIndex, studentIndex);
+                showSnackbar("تم إضافة التلاوة بنجاح!");
             } else {
-                showSnackbar("All fields are required!", "error");
+                showSnackbar("جميع الحقول مطلوبة!");
             }
         }
     );
@@ -333,47 +323,36 @@ function addRecitation(classIndex, studentIndex) {
 
 window.addRecitation = addRecitation;
 // Edit Recitation
-// Edit Recitation
 function editRecitation(classIndex, studentIndex, recIndex) {
     const rec = data.classes[classIndex].students[studentIndex].recitations[recIndex];
-
     openModal(
-        'Edit Recitation',
+        'تعديل التلاوة',
         `
-        <div class="modal-body">
-            <label for="recitation-date">Date:</label>
-            <input id="recitation-date" type="date" value="${rec.date}" class="modal-input" />
-            
-            <label for="recitation-surah">Surah Name:</label>
-            <input id="recitation-surah" type="text" value="${rec.surah}" class="modal-input" />
-            
-            <label for="recitation-from">From Ayah:</label>
-            <input id="recitation-from" type="text" value="${rec.from}" class="modal-input" />
-            
-            <label for="recitation-to">To Ayah:</label>
-            <input id="recitation-to" type="text" value="${rec.to}" class="modal-input" />
-        </div>
+        <label for="edit-recitation-date">التاريخ:</label>
+        <input id="edit-recitation-date" type="date" value="${rec.date}" class="modal-input" />
+        <label for="edit-recitation-surah">السورة:</label>
+        <input id="edit-recitation-surah" type="text" value="${rec.surah}" class="modal-input" />
+        <label for="edit-recitation-from">من:</label>
+        <input id="edit-recitation-from" type="text" value="${rec.from}" class="modal-input" />
+        <label for="edit-recitation-to">إلى:</label>
+        <input id="edit-recitation-to" type="text" value="${rec.to}" class="modal-input" />
         `,
         () => {
-            // Get updated values from modal inputs
-            const updatedDate = document.getElementById("recitation-date").value;
-            const updatedSurah = document.getElementById("recitation-surah").value.trim();
-            const updatedFrom = document.getElementById("recitation-from").value.trim();
-            const updatedTo = document.getElementById("recitation-to").value.trim();
+            const date = document.getElementById("edit-recitation-date").value;
+            const surah = document.getElementById("edit-recitation-surah").value.trim();
+            const from = document.getElementById("edit-recitation-from").value.trim();
+            const to = document.getElementById("edit-recitation-to").value.trim();
 
-            // Validate inputs
-            if (updatedDate && updatedSurah && updatedFrom && updatedTo) {
-                // Update recitation object
-                rec.date = updatedDate;
-                rec.surah = updatedSurah;
-                rec.from = updatedFrom;
-                rec.to = updatedTo;
-
-                saveData(); // Save changes to localStorage
-                showStudentDetails(classIndex, studentIndex); // Refresh student details
-                showSnackbar("Recitation updated successfully!");
+            if (date && surah && from && to) {
+                rec.date = date;
+                rec.surah = surah;
+                rec.from = from;
+                rec.to = to;
+                saveData();
+                showStudentDetails(classIndex, studentIndex);
+                showSnackbar("تم تحديث التلاوة بنجاح!");
             } else {
-                showSnackbar("All fields are required!", "error");
+                showSnackbar("جميع الحقول مطلوبة!");
             }
         }
     );
@@ -386,13 +365,13 @@ window.editRecitation = editRecitation;
 // Delete Recitation
 function deleteRecitation(classIndex, studentIndex, recIndex) {
     openModal(
-        'Confirm Deletion',
-        'Are you sure you want to delete this recitation?',
+        'تأكيد الحذف',
+        'هل أنت متأكد أنك تريد حذف هذه التلاوة؟',
         () => {
             data.classes[classIndex].students[studentIndex].recitations.splice(recIndex, 1);
-            saveData(); // Save updated data to localStorage
-            showStudentDetails(classIndex, studentIndex); // Reload student details to reflect the change
-            showSnackbar("Recitation deleted successfully!");
+            saveData();
+            showStudentDetails(classIndex, studentIndex);
+            showSnackbar("تم حذف التلاوة بنجاح!");
         }
     );
 }

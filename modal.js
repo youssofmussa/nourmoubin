@@ -34,12 +34,12 @@ modalContent.appendChild(modalActions);
 
 const cancelBtn = document.createElement('button');
 cancelBtn.classList.add('cancel-btn');
-cancelBtn.textContent = 'Cancel';
+cancelBtn.textContent = 'الغاء';
 modalActions.appendChild(cancelBtn);
 
 const confirmBtn = document.createElement('button');
 confirmBtn.classList.add('confirm-btn');
-confirmBtn.textContent = 'Confirm';
+confirmBtn.textContent = 'تأكيد';
 modalActions.appendChild(confirmBtn);
 
 // Close modal when clicking the close button or overlay

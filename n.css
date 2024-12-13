@@ -1,12 +1,20 @@
-/* General Reset */
+@font-face {
+    font-family: "Abd El Rady";
+    src: url("fonts/Abd-ElRady-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+    
+}
+   
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
+body { 
+    font-family: "Abd El Rady", sans-serif; 
     background-color: #f9f9f9;
     color: #333;
 }
@@ -71,8 +79,10 @@ main {
 .card-buttons {
     display: flex;
     align-items: center;
-    gap: 10px; /* Adds a fixed 10px gap between buttons */
+    gap: 10px; /* Adds space between the buttons */
+    justify-content: center; /* Centers the buttons horizontally */
 }
+
 
 /* Button styles */
 .edit-btn,
@@ -194,7 +204,7 @@ main {
 
 #recitations th, #recitations td {
     padding: 10px;
-    text-align: left;
+    text-align: center;
     border: 1px solid #ddd;
 }
 
@@ -333,15 +343,7 @@ main {
 }
 
 /* Dropdown select field */
-.modal-body select.modal-input {
-    background: #f6f8fa;
-    padding: 18px 22px;
-    font-size: 1.2rem;
-    border: 2px solid #ddd;
-    border-radius: 12px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-    outline: none;
-    appearance: none; /* Remove default dropdown */
+.modal-body select.modal-input {    background: #f6f8fa;    padding: 18px 22px;    font-size: 1.2rem;    border: 2px solid #ddd;    border-radius: 12px;    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;    outline: none;    appearance: none; /* Remove default dropdown */
 }
 
 /* Focus state for dropdown */
@@ -353,22 +355,10 @@ main {
 }
 
 /* Submit Button Container */
-.modal-actions {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 10px 20px;
+.modal-actions {    display: flex;    justify-content: space-between;    gap: 10px;    padding: 10px 20px;
 }
 
-.modal-actions button {
-    flex: 1;
-    padding: 12px 16px;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+.modal-actions button {    flex: 1;    padding: 12px 16px;    font-size: 1rem;    font-weight: bold;    border: none;    border-radius: 8px;    cursor: pointer;    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .modal-actions button:hover {
@@ -389,17 +379,7 @@ main {
 .confirm-btn:hover {    background: linear-gradient(135deg, #4c0dbb, #1a5ed9);}
 
 /* Close Button */
-.close-modal {
-    position: absolute;
-    top: 0px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 3em;
-    color: #333;
-    cursor: pointer;
-    transition: color 0.2s ease;
-    z-index: 1;
+.close-modal {    position: absolute;    top: 0px;    right: 10px;    background: none;    border: none;    font-size: 3em;    color: #333;    cursor: pointer;    transition: color 0.2s ease;    z-index: 1;
 }
 
 .close-modal:hover {
