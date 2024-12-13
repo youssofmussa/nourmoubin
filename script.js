@@ -292,8 +292,11 @@ function addRecitation(classIndex, studentIndex) {
         'Add Recitation',
         `
         <div class="modal-body">
-            <label for="recitation-date">Date</label>            <input id="recitation-date" type="date" class="modal-input" />            <label for="recitation-surah">Surah Name</label>     <input id="recitation-surah" type="text" placeholder="Enter Surah Name" class="modal-input" />
-            <label for="recitation-from">From Ayah</label>       <input id="recitation-from" type="text" placeholder="Enter Start Ayah" class="modal-input" />            <label for="recitation-to">To Ayah</label>            <input id="recitation-to" type="text" placeholder="Enter End Ayah" class="modal-input" />
+            <label for="recitation-date">Date</label>
+            <input id="recitation-date" type="date" class="modal-input" />
+            <label for="recitation-surah">Surah Name</label>     <input id="recitation-surah" type="text" placeholder="Enter Surah Name" class="modal-input" />
+            <label for="recitation-from">From Ayah</label>       <input id="recitation-from" type="text" placeholder="Enter Start Ayah" class="modal-input" />
+                        <label for="recitation-to">To Ayah</label>            <input id="recitation-to" type="text" placeholder="Enter End Ayah" class="modal-input" />
         </div>
         `,
         () => {
