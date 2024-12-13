@@ -292,17 +292,8 @@ function addRecitation(classIndex, studentIndex) {
         'Add Recitation',
         `
         <div class="modal-body">
-            <label for="recitation-date">Date</label>
-            <input id="recitation-date" type="date" class="modal-input" />
-            
-            <label for="recitation-surah">Surah Name</label>
-            <input id="recitation-surah" type="text" placeholder="Enter Surah Name" class="modal-input" />
-            
-            <label for="recitation-from">From Ayah</label>
-            <input id="recitation-from" type="text" placeholder="Enter Start Ayah" class="modal-input" />
-            
-            <label for="recitation-to">To Ayah</label>
-            <input id="recitation-to" type="text" placeholder="Enter End Ayah" class="modal-input" />
+            <label for="recitation-date">Date</label>            <input id="recitation-date" type="date" class="modal-input" />            <label for="recitation-surah">Surah Name</label>     <input id="recitation-surah" type="text" placeholder="Enter Surah Name" class="modal-input" />
+            <label for="recitation-from">From Ayah</label>       <input id="recitation-from" type="text" placeholder="Enter Start Ayah" class="modal-input" />            <label for="recitation-to">To Ayah</label>            <input id="recitation-to" type="text" placeholder="Enter End Ayah" class="modal-input" />
         </div>
         `,
         () => {
@@ -339,36 +330,37 @@ function addRecitation(classIndex, studentIndex) {
 
 window.addRecitation = addRecitation;
 // Edit Recitation
+// Edit Recitation
 function editRecitation(classIndex, studentIndex, recIndex) {
     const rec = data.classes[classIndex].students[studentIndex].recitations[recIndex];
 
-    // Modal Content for Editing Recitation
     openModal(
         'Edit Recitation',
         `
-        <div class="modal-inputs">
+        <div class="modal-body">
             <label for="recitation-date">Date:</label>
-            <input id="recitation-date" type="date" value="${rec.date}" />
+            <input id="recitation-date" type="date" value="${rec.date}" class="modal-input" />
             
             <label for="recitation-surah">Surah Name:</label>
-            <input id="recitation-surah" type="text" value="${rec.surah}" />
+            <input id="recitation-surah" type="text" value="${rec.surah}" class="modal-input" />
             
             <label for="recitation-from">From Ayah:</label>
-            <input id="recitation-from" type="text" value="${rec.from}" />
+            <input id="recitation-from" type="text" value="${rec.from}" class="modal-input" />
             
             <label for="recitation-to">To Ayah:</label>
-            <input id="recitation-to" type="text" value="${rec.to}" />
+            <input id="recitation-to" type="text" value="${rec.to}" class="modal-input" />
         </div>
         `,
         () => {
             // Get updated values from modal inputs
             const updatedDate = document.getElementById("recitation-date").value;
-            const updatedSurah = document.getElementById("recitation-surah").value;
-            const updatedFrom = document.getElementById("recitation-from").value;
-            const updatedTo = document.getElementById("recitation-to").value;
+            const updatedSurah = document.getElementById("recitation-surah").value.trim();
+            const updatedFrom = document.getElementById("recitation-from").value.trim();
+            const updatedTo = document.getElementById("recitation-to").value.trim();
 
-            // Update recitation object
+            // Validate inputs
             if (updatedDate && updatedSurah && updatedFrom && updatedTo) {
+                // Update recitation object
                 rec.date = updatedDate;
                 rec.surah = updatedSurah;
                 rec.from = updatedFrom;
@@ -377,10 +369,15 @@ function editRecitation(classIndex, studentIndex, recIndex) {
                 saveData(); // Save changes to localStorage
                 showStudentDetails(classIndex, studentIndex); // Refresh student details
                 showSnackbar("Recitation updated successfully!");
+            } else {
+                showSnackbar("All fields are required!", "error");
             }
         }
     );
 }
+
+window.editRecitation = editRecitation;
+
 
 
 // Delete Recitation
@@ -397,7 +394,6 @@ function deleteRecitation(classIndex, studentIndex, recIndex) {
     );
 }
 window.deleteRecitation = deleteRecitation;
-window.editRecitation = editRecitation;
 window.deleteClass = deleteClass;
 
 // Back Buttons
